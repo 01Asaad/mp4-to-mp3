@@ -18,7 +18,6 @@ def threaded_task(selected_files):
         task_status.set(f"converting {file}")
         try : convert(file[:-4])
         except : failed.append(file)
-    print("Threaded task complete")
     start_button.config(state=tk.NORMAL)
     browse_button.config(state=tk.NORMAL)
     if len(failed)>0 :
