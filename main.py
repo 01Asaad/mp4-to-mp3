@@ -7,8 +7,7 @@ import threading
 from converter import convert
 
 def scan_directory(directory_path):
-    mp4_files = [file for file in os.listdir(directory_path) if file.endswith(".mp4")]
-    return mp4_files
+    return [file for file in os.listdir(directory_path) if file.endswith(".mp4")]
 def select_all():
     listbox.select_set(0, tk.END)
 def threaded_task(selected_files):
@@ -55,10 +54,10 @@ def auto_scan_current_directory():
 
 root = tk.Tk()
 root.title("MP4 File Scanner")
-root.geometry("400x300")  # Set the window size
+root.geometry("400x300")
 
 style = ttk.Style()
-style.theme_use("clam")  # Use a different ttk theme for a modern appearance
+style.theme_use("clam") 
 
 listbox = tk.Listbox(root, selectmode=tk.MULTIPLE)
 listbox.pack(fill=tk.BOTH, expand=True)
@@ -77,6 +76,6 @@ start_button.pack()
 task_status = tk.StringVar()
 status_label = ttk.Label(root, textvariable=task_status)
 status_label.pack()
-auto_scan_current_directory()  # Automatically scan the current directory when the GUI starts
+auto_scan_current_directory()
 
 root.mainloop()
